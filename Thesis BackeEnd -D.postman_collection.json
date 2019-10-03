@@ -1,0 +1,634 @@
+{
+	"info": {
+		"_postman_id": "fc1c983e-8b0a-4608-afc0-6c56ff274571",
+		"name": "Thesis BackeEnd :D",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"behnam aminAzad\",\n\t\"studentNum\": \"9531007\",\n\t\"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/student/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"student",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"studentNum\": \"9431004\",\n\t\"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/student/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"student",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Session",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/prof/session/start?name=session10&classId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"prof",
+						"session",
+						"start"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "session10"
+						},
+						{
+							"key": "classId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QR code view route",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/qr-code-view",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"qr-code-view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change QR Code",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/prof/qr/next?sessionId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"prof",
+						"qr",
+						"next"
+					],
+					"query": [
+						{
+							"key": "sessionId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check QRCode",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1ZDQyMTBhMDc0N2ZiZmYxYmFlZWY0Y2QzZjU0Nzg4ZGRiOWE4NjU3ZTAzZjJlNWI1ODlkZmJjMGIzNTQ2NjVjMGI1ZTFlNzBhYjY3OThhIn0.eyJhdWQiOiIzIiwianRpIjoiNTVkNDIxMGEwNzQ3ZmJmZjFiYWVlZjRjZDNmNTQ3ODhkZGI5YTg2NTdlMDNmMmU1YjU4OWRmYmMwYjM1NDY2NWMwYjVlMWU3MGFiNjc5OGEiLCJpYXQiOjE1Njg4MDk3NzEsIm5iZiI6MTU2ODgwOTc3MSwiZXhwIjoxNjAwNDMyMTcwLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.ZhC1V-os1DnMYJ3OPBTuxSJ6CDjIX_NV79mG_NSgLh1Hvou_q_Ft-5BopDo5bhtDe-q7l-4RHLtl0mYP1jJ4MtS4x90evyn6H25TO-Le93v3ukQl_n0UHIAZVP9gNvyZs2hVCtcUdwqwrVBYMz0ft87FAwPGmw_Mk5_XCuLd8U_AyZg9ko4MmmIcwtM81HzlJbc6vqgXVL2qOS5a8qMvrgu3RjIUegwThQjXU_P7GKJhFwbUrya_MYm11ju832hD8OrT-LBaJaMF7V7tN0dsJaNuWJXm0NVlkUqChSZ11q8SuUhsvTrtYL4-YzspN0EbA0SCFjgmkjbsGnjvNGIvTQqfPiEo68zt9CvzGitAndiIHzHQQKYc7zM-D5vk_JVaGJC0MlnL9euTaTwsc67m7madGUOBRNvPxSC2GcnMTLRGuOEQBY_KgODziwgeIkSwTwMvKuGXgmv15J8IIjkZQd74DJZLas0zQVLsha_xKnAVhWY_E9XecMm_bj_DObncOT0HNoGnAFLp9hOSWXn56l9GMkvjRcqlWsL5hfXEd46Vjc8ovNvDi5qIakKk90AAFC0CvjUHR57m6L6PG4BLA1TrMm_lm-80QTp1VTBJ1nqqvKg-tPAYKVa6L5v1jBCYq0M_8HeTj_5R4k59g5pnfAE8PDlSPZFI-L964G0DzH0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"classId\": 1,\n\t\"qr\": \"_2_98439\",\n\t\"userId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/student/qr/validate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"student",
+						"qr",
+						"validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Class",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/prof/class/create?name=class0&daysBegin=1 3&timesBegin=9:15-10:45&place=201&password=123456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"prof",
+						"class",
+						"create"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "class0"
+						},
+						{
+							"key": "daysBegin",
+							"value": "1 3"
+						},
+						{
+							"key": "timesBegin",
+							"value": "9:15-10:45"
+						},
+						{
+							"key": "place",
+							"value": "201"
+						},
+						{
+							"key": "password",
+							"value": "123456"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show QRCode",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/qr.svg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"qr.svg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subscribe Student",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userId\": 2,\n\t\"classId\": 1,\n\t\"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/student/sub/class",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"student",
+						"sub",
+						"class"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Student Presence",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/prof/student/add?userId=2&sessionId=2&classId=1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"prof",
+						"student",
+						"add"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "2"
+						},
+						{
+							"key": "sessionId",
+							"value": "2"
+						},
+						{
+							"key": "classId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Student Presence",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/prof/student/delete?presenceId=1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"prof",
+						"student",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "presenceId",
+							"value": "1"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Class list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/both/class/list",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"both",
+						"class",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get class details for Student",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/student/class/1/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"student",
+						"class",
+						"1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get class detail professor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/prof/class/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"prof",
+						"class",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Class",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/prof/class/delete/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"prof",
+						"class",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get student absent session",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/student/class/presence/list/2/2",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"student",
+						"class",
+						"presence",
+						"list",
+						"2",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get student Profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/student/profile/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"student",
+						"profile",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get class Sessions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/prof/class/session/2",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"prof",
+						"class",
+						"session",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get session presence",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/prof/class/session/presence/2/6",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"prof",
+						"class",
+						"session",
+						"presence",
+						"2",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get session absence",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/prof/class/session/absence/2/6",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"prof",
+						"class",
+						"session",
+						"absence",
+						"2",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all profiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/prof/list/profile",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"prof",
+						"list",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset password",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/prof/reset/password/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"prof",
+						"reset",
+						"password",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -439,5 +439,99 @@ def student_profile(user_id):
         return json.dumps({"statusCode": status, "code": message, "data": result}), 200
 
 
+@app.route('/api/prof/class/session/<class_id>', methods=['GET'])
+def get_class_sessions(class_id):
+    status = 1000
+    message = "failure"
+    try:
+        with connection.cursor() as cursor:
+            check = "SELECT * from session where class_id = %s"
+            cursor.execute(check, class_id)
+            result = cursor.fetchall()
+            status = 0
+            message = "success"
+    except Exception as exception:
+        message = exception
+        status = 100
+    finally:
+        return json.dumps({"statusCode": status, "code": message, "data": result}), 200
+
+
+@app.route('/api/prof/class/session/presence/<class_id>/<session_id>', methods=['GET'])
+def get_class_sessions_presence(class_id, session_id):
+    status = 1000
+    message = "failure"
+    try:
+        with connection.cursor() as cursor:
+            check = "SELECT * from users where id in " \
+                    "(select user_id from presence where " \
+                    "session_id = %s and class_id = %s)"
+            cursor.execute(check, (session_id, class_id))
+            result = cursor.fetchall()
+            status = 0
+            message = "success"
+    except Exception as exception:
+        message = exception
+        status = 100
+    finally:
+        return json.dumps({"statusCode": status, "code": message, "data": result}), 200
+
+
+@app.route('/api/prof/class/session/absence/<class_id>/<session_id>', methods=['GET'])
+def get_class_sessions_absence(class_id, session_id):
+    status = 1000
+    message = "failure"
+    try:
+        with connection.cursor() as cursor:
+            check = "select * from users where id in (select user_id from subscription" \
+                    " where class_id = %s and user_id not in (select user_id from presence" \
+                    " where class_id = %s and session_id = %s))"
+            cursor.execute(check, (class_id, class_id, session_id))
+            result = cursor.fetchall()
+            status = 0
+            message = "success"
+    except Exception as exception:
+        message = exception
+        status = 100
+    finally:
+        return json.dumps({"statusCode": status, "code": message, "data": result}), 200
+
+
+@app.route('/api/prof/list/profile', methods=['GET'])
+def get_profile_list():
+    status = 1000
+    message = "failure"
+    try:
+        with connection.cursor() as cursor:
+            check = "select * from users"
+            cursor.execute(check)
+            result = cursor.fetchall()
+            status = 0
+            message = "success"
+    except Exception as exception:
+        message = exception
+        status = 100
+    finally:
+        return json.dumps({"statusCode": status, "code": message, "data": result}), 200
+
+
+@app.route('/api/prof/reset/password/<user_id>', methods=['GET'])
+def reset_password(user_id):
+    status = 1000
+    message = "failure"
+    try:
+        with connection.cursor() as cursor:
+            check = "update users set password = \"123456\" where id = %s"
+            cursor.execute(check, user_id)
+            connection.commit()
+            status = 0
+            message = "success"
+    except Exception as exception:
+        message = exception
+        status = 100
+    finally:
+        return json.dumps({"statusCode": status, "code": message}), 200
+
+
 if __name__ == '__main__':
     app.run()
